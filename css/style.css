@@ -9532,6 +9532,10 @@ h4, h5, h6 {
   color: #95C22B;
 }
 
+.custom_navbar{
+  background-color: #ddd1b4 !important;
+}
+
 @media (max-width: 991.98px) {
   .navbar-dark .navbar-nav .nav-link {
     padding: 10px 0;
