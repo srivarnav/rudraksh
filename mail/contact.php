@@ -1,4 +1,18 @@
 <?php
+// Allow from any origin
+header("Access-Control-Allow-Origin: *");
+// Allow specific methods
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+// Allow specific headers
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    // Handle preflight requests
+    http_response_code(200);
+    exit();
+}
+
+
 if(empty($_POST['name']) || empty($_POST['subject']) || empty($_POST['message']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
   http_response_code(500);
   exit();
@@ -15,6 +29,11 @@ $body = "You have received a new message from your website contact form.\n\n"."H
 $header = "From: $email";
 $header .= "Reply-To: $email";	
 
-if(!mail($to, $subject, $body, $header))
+echo $to + $subject + $body + $header;
+
+if(mail($to, $subject, $body, $header)) {
+  echo "Email successfully sent.";
+} else {
   http_response_code(500);
+}
 ?>
