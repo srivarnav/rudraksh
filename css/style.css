@@ -9667,4 +9667,16 @@ h4, h5, h6 {
   .custom-navbar-brand{
     display: none !important;
   }
+
+  .border-mobile {
+    border: none !important;
+  }
+
+  .text-mobile {
+    text-align: start !important;
+  }
+  .icon-mobile {
+    margin-right: 0.5rem !important;
+    margin-left: 0px !important;
+  }
 }
